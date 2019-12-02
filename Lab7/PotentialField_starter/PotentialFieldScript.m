@@ -46,6 +46,7 @@ repulsive (d2 > d0) = 0;
 %% вычисление и визуализация "притягивающей" компоненты
 
 goal = [400, 50];
+% goal = [550, 150];
 
 xi = 1/700;
 
@@ -80,12 +81,12 @@ attractive = xi * ( (x - goal(1)).^2 + (y - goal(2)).^2 );
 
 f = attractive + repulsive;
 
-figure;
-m = mesh (f);
-m.FaceLighting = 'phong';
-axis equal;
-
-title ('Total Potential');
+% figure;
+% m = mesh (f);
+% m.FaceLighting = 'phong';
+% axis equal;
+% 
+% title ('Total Potential');
 
 %% планирование пути
 start = [50, 350];

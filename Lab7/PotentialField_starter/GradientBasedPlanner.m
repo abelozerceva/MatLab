@@ -10,33 +10,27 @@ function route = GradientBasedPlanner (f, start_coords, end_coords, max_its)
 [gx, gy] = gradient (-f);
 
 % *******************************************************************
-% ВАШ КОД ДОЛЖЕН НАХОДИТЬСЯ ЗДЕСЬ
-% max(gx)
-% min(gy)
-% max(gy)
-% min(gy)
-
-% figure;
-% m = mesh (gy);
-% m.FaceLighting = 'phong';
-% axis equal;
-
-a = 1;
-gx(start_coords)
-route = zeros(max_its, 2);
-route(1,:) = start_coords;
+% ВАШ КОД ДОЛЖЕН НАХОД�?ТЬСЯ ЗДЕСЬ
+route = start_coords;
 n = 1;
-x1 = 
-y1 = 
+tmp = start_coords;
+distance = [];
+% gx(tmp(2),tmp(1))
 while n < (max_its - 1)
-%     tmp_x = route(n,1) -  
-%     dist = abs(route() - route()) + abs(route() - route());
+    grad = [gx(round(tmp(2)),round(tmp(1))) gy(round(tmp(2)),round(tmp(1)))];
+    last = tmp;
+    tmp = tmp + 0.5*grad/norm(grad);   
+    dist = sqrt((end_coords(1) - tmp(1))^2 + (end_coords(2) - tmp(2))^2);
     if dist < 2
         break;
     end
+    tmp_dist = sqrt((last(1) - tmp(1))^2 + (last(2) - tmp(2))^2);
+%     if (tmp_dist > 1.0)
+%         distance = [distance; n tmp_dist];
+%     end
     n = n + 1;
+    route = [route; tmp];
 end
-route(n,:) = end_coords;
 % *******************************************************************
 
 end
